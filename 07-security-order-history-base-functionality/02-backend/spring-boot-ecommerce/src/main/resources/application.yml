@@ -1,0 +1,22 @@
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          external:
+            issuer-uri: http://localhost:8080/realms/external
+        registration:
+          external:
+            provider: external
+            client-name: external-client
+            client-id: external-client
+            client-secret: 2yPikBDeG25i400mq7Osgh9fbueN4qqF
+            scope: openid, offline_access, profile
+            authorization-grant-type: authorization_code
+server:
+  port: 8081
+
+security:
+  success-url: http://localhost:8081/
+  logout-url: http://0.0.0.0:8080/realms/spring-boot-realm/protocol/openid-connect/logout
+  redirect-uri: http://localhost:8081/

@@ -1,0 +1,40 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/external
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+
+server:
+  port: 8081
+
+jwt:
+  auth:
+    converter:
+      resource-id: external-client
+      principle-attribute: preferred_username
+
+
+#spring:
+#  security:
+#    oauth2:
+#      client:
+#        provider:
+#          external:
+#            issuer-uri: http://localhost:8080/realms/external
+#        registration:
+#          external:
+#            provider: external
+#            client-name: external-client
+#            client-id: external-client
+#            client-secret: UIwqWpE27UcRB8GoDSOt2l1Ux5St6vi8
+#            scope: openid, offline_access, profile
+#            authorization-grant-type: authorization_code
+#server:
+#  port: 8081
+#
+#security:
+#  success-url: http://localhost:8081/
+#  logout-url: http://0.0.0.0:8080/realms/spring-boot-realm/protocol/openid-connect/logout
+#  redirect-uri: http://localhost:8081/
